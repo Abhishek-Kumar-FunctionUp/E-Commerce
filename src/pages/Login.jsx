@@ -11,12 +11,11 @@ const LoginPage = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false); // New state for checkbox
-
+  const [rememberMe, setRememberMe] = useState(false); 
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const registeredUsers = useSelector((state) => state.users.registeredUsers); // Access registeredUsers from state
+  const registeredUsers = useSelector((state) => state.users.registeredUsers); 
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -35,7 +34,7 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation logic
+    
     if (username === '') {
       setUsernameError('Username is required');
       return;
@@ -46,21 +45,20 @@ const LoginPage = () => {
       return;
     }
 
-    // Check if the username and password match the registered user data
-    // For simplicity, we'll assume the login is successful if username is 'registeruser' and password is 'password'
+    
     const matchedUser = registeredUsers.find((user) => user.username === username && user.password === password);
     if (matchedUser) {
       dispatch(loginSuccess());
       navigate('/');
 
-      // Set cookie if rememberMe is checked
+      
       if (rememberMe) {
-        document.cookie = `username=${matchedUser.username}; max-age=3600`; // Set username cookie for 1 hour
+        document.cookie = `username=${matchedUser.username}; max-age=3600`; 
         document.cookie = `password=${matchedUser.password}; max-age=3600`; // Set password cookie for 1 hour
       }
     } else {
         
-      // Display an error message for incorrect credentials
+      
       setPasswordError('Invalid username or password');
     }
   };

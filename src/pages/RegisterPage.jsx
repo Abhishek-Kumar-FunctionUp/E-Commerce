@@ -64,7 +64,7 @@ const RegisterPage = () => {
   const handleConfirmPasswordChange = (e) => {
     const value = e.target.value;
     setConfirmPassword(value);
-    // Validation logic
+    
   };
 
   const handleSubmit = (e) => {
@@ -73,7 +73,7 @@ const RegisterPage = () => {
         setConfirmPasswordError('Passwords do not match');
         return;
       }
-    // Validation logic
+    
     if (username === '') {
       setUsernameError('Username is required');
       return;
@@ -104,7 +104,7 @@ const RegisterPage = () => {
       return;
     }
 
-    // Create user data object
+   
     const userData = {
       username,
       email,
@@ -113,10 +113,10 @@ const RegisterPage = () => {
       isAuthenticated: false,
     };
 
-    // Dispatch the registerUser action
+    
     dispatch(registerUser(userData));
 
-    // Reset form fields
+   
     setUsername('');
     setEmail('');
     setBirthdate('');

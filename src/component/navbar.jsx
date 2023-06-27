@@ -9,12 +9,9 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Dispatch the logout action
+   
     dispatch(logout());
 
-    // Perform any additional logout logic if needed
-
-    // Redirect to the login page or any other desired page
     navigate("/login");
   };
 

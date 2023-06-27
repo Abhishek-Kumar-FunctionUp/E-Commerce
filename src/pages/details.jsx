@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './ProductDetailsModal.css'; // Import the CSS file for styling
+import './ProductDetailsModal.css'; 
 
 const ProductDetailsModal = ({ product, onClose }) => {
   return ReactDOM.createPortal(
@@ -23,7 +23,7 @@ const ProductDetailsModal = ({ product, onClose }) => {
         </div>
       </div>
     </>,
-    document.body // Specify the body element to render the modal content and cover the entire page
+    document.body 
   );
 };
 

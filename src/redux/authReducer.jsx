@@ -10,11 +10,11 @@ const initialState = {
           ...state,
           isAuthenticated: true,
         };
-      case 'LOGOUT':
-        return {
-          ...state,
-          isAuthenticated: false,
-        };
+     case "LOGIN":
+     return{
+       ...state,
+       isAuthenticated:true
+     }
       default:
         return state;
     }
