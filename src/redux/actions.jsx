@@ -22,10 +22,10 @@ export const registerUser = (userData) => {
     };
   };
   
-  export const removecart = (product) => {
+  export const removecart = (index) => {
     return {
       type: 'REMOVE_CART',
-      payload: product,
+      payload: index,
     };
   };
   

@@ -8,7 +8,7 @@ import MyCart from './component/mycart';
 
 const App = () => {
   const navigate = useNavigate();
-  const isAuthenticated = true;//useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -20,9 +20,12 @@ const App = () => {
     <Routes>
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/mycart" element={<MyCart />} />
+      <Route path="/myCart" element={<MyCart />} />
       {isAuthenticated ? (
+        <>
         <Route path="/" element={<Home />} />
+       
+        </>
       ) : (
         <Route path="/*" element={<LoginPage />} />
       )}

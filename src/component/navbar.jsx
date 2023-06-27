@@ -9,9 +9,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-   
-    dispatch(logout());
-
+    dispatch(logout()); // Dispatch the logout action
     navigate("/login");
   };
 
@@ -32,8 +30,8 @@ export default function Navbar() {
         </NavLink>
       </div>
       <div className="navbar-right">
-        <NavLink to="/mycart" className="navbar-link">
-          <i className="fas fa-shopping-cart"></i> My Cart
+        <NavLink to="/myCart" className="navbar-link">
+          MyCart
         </NavLink>
         <button className="logout-button" onClick={handleLogout}>
           Logout
