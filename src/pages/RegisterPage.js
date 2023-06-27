@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../redux/actions';
 import './Register.css';
@@ -15,7 +15,7 @@ const RegisterPage = () => {
     const[birthdateError,setBirthdateError]=useState("")
     const[emailError,setEmailError]=useState('')
     const[confirmPasswordError,setConfirmPasswordError]=useState('')
- const navigate
+ const navigate=useNavigate()
   const dispatch = useDispatch();
 
   const handleUsernameChange = (e) => {
@@ -110,6 +110,7 @@ const RegisterPage = () => {
       email,
       birthdate,
       password,
+      isAuthenticated: false,
     };
 
     // Dispatch the registerUser action
@@ -121,6 +122,8 @@ const RegisterPage = () => {
     setBirthdate('');
     setPassword('');
     setConfirmPassword('');
+    navigate('/login')
+    console.log(userData)
   };
 
   return (
@@ -185,7 +188,7 @@ const RegisterPage = () => {
         <button type="submit" className="submit-button">
           Register
         </button>
-        <Link to="/" className="login-link">
+        <Link to="/login" className="login-link">
           Already registered? Login here
         </Link>
       </form>

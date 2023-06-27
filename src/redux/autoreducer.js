@@ -1,3 +1,4 @@
+// authReducer.js
 const initialState = {
     isAuthenticated: false,
   };
@@ -9,18 +10,6 @@ const initialState = {
           ...state,
           isAuthenticated: true,
         };
-      case 'LOGIN':
-        const { username, password } = action.payload;
-        // Check if the username and password match the registered user data
-        // For simplicity, we'll assume the login is successful
-        if (username === 'registeredUser' && password === 'password') {
-          return {
-            ...state,
-            isAuthenticated: true,
-          };
-        } else {
-          return state;
-        }
       case 'LOGOUT':
         return {
           ...state,

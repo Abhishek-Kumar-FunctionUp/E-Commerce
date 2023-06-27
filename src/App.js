@@ -1,39 +1,30 @@
 import React, { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/Login';
 import Home from './component/home';
-import { Navigate } from 'react-router-dom';
+import MyCart from './component/mycart';
 
 const App = () => {
-  const navigate=useNavigate()
-  const isAuthenticated = false; // Replace with your authentication logic
-  
-  useEffect(()=>{
-    if(isAuthenticated){
-          navigate("/")
-        }else{
-          navigate("/login")
-        }
-  },[])
-  // (function(){
-  //   if(isAuthenticated){
-  //     navigate("/")
-  //   }else{
-  //     navigate("/login")
-  //   }
-  // })();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/'); // Redirect to home page if user is authenticated
+    }
+  }, [isAuthenticated, navigate]);
+ console.log(isAuthenticated)
   return (
     <Routes>
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/mycart" element={<MyCart />} />
       {isAuthenticated ? (
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
       ) : (
-        <Route
-          path="/"
-          element={() => <Navigate to="/login" replace />}
-        />
+        <Route path="/*" element={<LoginPage />} />
       )}
     </Routes>
   );

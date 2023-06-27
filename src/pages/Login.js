@@ -1,13 +1,14 @@
+
 import React, { useState } from 'react';
-import { Link, useNavigate,  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../redux/actions';
+import { loginSuccess } from '../redux/actions';
 import './login.css';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-//   const history = useHistory();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -25,29 +26,30 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     // Validation logic
     if (username === '') {
       setUsernameError('Username is required');
       return;
     }
-
+  
     if (password === '') {
       setPasswordError('Password is required');
       return;
     }
-
-    // Dispatch the login action
-    dispatch(login(username, password));
-
-    // Reset form fields
-    setUsername('');
-    setPassword('');
-
-    // Navigate to the homepage if login is successful
-    // history.push('/home');
-    navigate('/home')
+  
+    // Check if the username and password match the registered user data
+    // For simplicity, we'll assume the login is successful if username is 'registeredUser' and password is 'password'
+    if (username === 'registeredUser' && password === 'password') {
+      dispatch(loginSuccess());
+      navigate('/');
+    } else {
+      // Display an error message for incorrect credentials
+      setPasswordError('Invalid username or password');
+    }
   };
+  
+  
 
   return (
     <div className="container">

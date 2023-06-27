@@ -17,6 +17,27 @@ export const registerUser = (userData) => {
       password,
     },
   });
+  export const addToCart = (product) => {
+    return {
+      type: 'ADD_TO_CART',
+      payload: product,
+    };
+  };
+  export const removecart=(product)=>({
+type:'Remove_Cart',
+payload:product
+  })
+  export const loginSuccess = () => {
+    return {
+      type: 'LOGIN_SUCCESS',
+    };
+  };
+  
+  export const logout = () => {
+    return {
+      type: 'LOGOUT',
+    };
+  };
   
 
 
