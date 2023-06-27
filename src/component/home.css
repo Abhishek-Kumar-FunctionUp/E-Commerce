@@ -72,19 +72,81 @@
   .homepage {
     display: flex;
   }
-  
   .categorize {
-    flex: 30%;
-     width: 10%;
+    flex: 0 0 10%;
+    width: 8%;
     background-color: #f2f2f2;
     margin-top: 3rem;
+    padding: 1rem;
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .favorite.active:before {
-    content: '★';
-    color: gold;
+  
+  
+  .category-options {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
   }
+  
+  .filter-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: auto;
+  }
+  
+  .apply-button {
+    margin-top: 2px;
+    padding: 10px 20px;
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .apply-button:hover {
+    background-color: #303f9f;
+  }
+ 
+
+.categorize label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.categorize label span {
+  margin-left: 1rem;
+}
+
+
+.categorize label:first-of-type span {
+  font-weight: bold;
+  
+}
+
+
+.categorize label:nth-of-type(2) span {
+  color: blue;
+  margin-left: 1rem;
+}
+
+
+.categorize label:nth-of-type(3) span {
+  color: purple;
+  margin-left: 1rem;
+}
+
+
+
+  
   

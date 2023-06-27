@@ -14,7 +14,7 @@ const Home = (props) => {
   const [showAppliedCategory, setShowAppliedCategory] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const[favorites,setFavorites]=useState([])
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     axios
@@ -32,10 +32,20 @@ const Home = (props) => {
     if (appliedCategory === 'all') {
       setFilteredProducts(products);
     } else {
-      const filtered = products.filter((product) => product.category === appliedCategory);
+      const filtered = products.filter((product) => {
+        if (appliedCategory === 'jewelry' && product.category === 'jewelery') {
+          return true;
+        } else if (appliedCategory === 'men' && product.category === "men's clothing") {
+          return true;
+        } else if (appliedCategory === 'women' && product.category === "women's clothing") {
+          return true;
+        } else {
+          return false;
+        }
+      });
       setFilteredProducts(filtered);
     }
-  }, [appliedCategory]);
+  }, [appliedCategory, products]);
 
   const filterProducts = (category) => {
     setSelectedCategory(category);
@@ -54,7 +64,7 @@ const Home = (props) => {
 
   const addToCartHandler = (product) => {
     props.addToCart(product);
-    alert('added');
+    alert('Added to cart!');
   };
 
   const openModal = (product) => {
@@ -66,8 +76,8 @@ const Home = (props) => {
     setSelectedProduct(null);
     setIsModalOpen(false);
   };
-  
-const toggleFavorite = (product) => {
+
+  const toggleFavorite = (product) => {
     const updatedFavorites = favorites.includes(product.id)
       ? favorites.filter((id) => id !== product.id)
       : [...favorites, product.id];
@@ -79,59 +89,78 @@ const toggleFavorite = (product) => {
       <Navbar />
       <div className="homepage">
         <div className="categorize">
-          <h3>Categories</h3>
-          <label>
-            <input
-              type="checkbox"
-              value="electronics"
-              checked={selectedCategory === 'electronics'}
-              onChange={() => filterProducts('electronics')}
-            />
-            <span>Electronics</span>
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="clothing"
-              checked={selectedCategory === 'clothing'}
-              onChange={() => filterProducts('clothing')}
-            />
-            <span>Clothing</span>
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              value="home"
-              checked={selectedCategory === 'home'}
-              onChange={() => filterProducts('home')}
-            />
-            <span>Home</span>
-          </label>
-          <button onClick={applyFilter}>Apply</button>
-          {showAppliedCategory && <button onClick={clearFilter}>Clear Filter</button>}
+          <h3 className="category-heading">Categories</h3>
+          <div className="category-checkboxes">
+            <label>
+              <input
+                type="checkbox"
+                value="jewelry"
+                checked={selectedCategory === 'jewelry'}
+                onChange={() => filterProducts('jewelry')}
+              />
+              <span className="category-label">Jewellery</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="men"
+                checked={selectedCategory === 'men'}
+                onChange={() => filterProducts('men')}
+              />
+              <span className="category-label">Men's Clothing</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="women"
+                checked={selectedCategory === 'women'}
+                onChange={() => filterProducts('women')}
+              />
+              <span className="category-label">Women's Clothing</span>
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="all"
+                checked={selectedCategory === 'all'}
+                onChange={() => filterProducts('all')}
+              />
+              <span className="category-label">All</span>
+            </label>
+          </div>
+          <div className="filter-actions">
+            <button className="apply-button" onClick={applyFilter}>
+              Apply
+            </button>
+            {showAppliedCategory && (
+              <button className="apply-button" onClick={clearFilter}>
+                Clear Filter
+              </button>
+            )}
+          </div>
         </div>
-        <div className="product-cards">
-        {filteredProducts.map((product) => (
-  <div key={product.id} className="card">
-    <img src={product.image} alt={product.title} className="card-image" />
-    <h3 className="card-title">{product.title}</h3>
-    <div className="card-buttons">
-      <button className="add-to-cart" onClick={() => addToCartHandler(product)}>
-        Add to Cart
-      </button>
-      <button className="details" onClick={() => openModal(product)}>
-        Details
-      </button>
-      <button
-        className={`favorite ${favorites.includes(product.id) ? 'active' : ''}`}
-        onClick={() => toggleFavorite(product)}
-      >
-        Favorite
-      </button>
-    </div>
-  </div>
-))}
 
+        <div className="product-cards">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="card">
+              <img src={product.image} alt={product.title} className="card-image" />
+              <h3 className="card-title">{product.title}</h3>
+              <div className="card-buttons">
+                <button className="add-to-cart" onClick={() => addToCartHandler(product)}>
+                  Add to Cart
+                </button>
+                <button className="details" onClick={() => openModal(product)}>
+                  Details
+                </button>
+                <button
+                  className={`favorite ${favorites.includes(product.id) ? 'active' : ''}`}
+                  onClick={() => toggleFavorite(product)}
+                >
+                  Favorite
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       {isModalOpen && (
