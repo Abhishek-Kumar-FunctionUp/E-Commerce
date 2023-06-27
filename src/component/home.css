@@ -123,3 +123,22 @@ display: flex;
 align-items: center;
 margin-bottom: 1rem;
 }
+
+.homepage {
+  display: flex;
+}
+
+.categorize {
+  flex: 30%;
+   width: 10%;
+  background-color: #f2f2f2;
+  margin-top: 3rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.favorite.active:before {
+  content: '★';
+  color: gold;
+}
