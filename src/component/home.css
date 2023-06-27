@@ -104,7 +104,7 @@
   }
   
   .apply-button {
-    margin-top: 2px;
+    margin-bottom: 444px;
     padding: 10px 20px;
     background-color: #3f51b5;
     color: white;
@@ -124,27 +124,10 @@
   margin-bottom: 1rem;
 }
 
-.categorize label span {
-  margin-left: 1rem;
-}
 
 
-.categorize label:first-of-type span {
-  font-weight: bold;
-  
-}
 
 
-.categorize label:nth-of-type(2) span {
-  color: blue;
-  margin-left: 1rem;
-}
-
-
-.categorize label:nth-of-type(3) span {
-  color: purple;
-  margin-left: 1rem;
-}
 
 
 

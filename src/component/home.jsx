@@ -97,8 +97,9 @@ const Home = (props) => {
                 value="jewelry"
                 checked={selectedCategory === 'jewelry'}
                 onChange={() => filterProducts('jewelry')}
+                style={{marginLeft:"1rem"}}
               />
-              <span className="category-label">Jewellery</span>
+              <span style={{marginLeft:"2rem",cursor: "pointer",borderRadius: "5px",padding: "10px 20px",width:"3px",backgroundColor:"#db9191"}}  className="category-label">Jewellery</span>
             </label>
             <label>
               <input
@@ -106,8 +107,10 @@ const Home = (props) => {
                 value="men"
                 checked={selectedCategory === 'men'}
                 onChange={() => filterProducts('men')}
+                style={{marginLeft:"rem"}}
+               
               />
-              <span className="category-label">Men's Clothing</span>
+              <span style={{marginLeft:"2rem",cursor: "pointer",borderRadius: "5px",padding: "10px 20px",width:"3px",backgroundColor:"#db9191"}}  className="category-label">Men's Clothing</span>
             </label>
             <label>
               <input
@@ -115,8 +118,10 @@ const Home = (props) => {
                 value="women"
                 checked={selectedCategory === 'women'}
                 onChange={() => filterProducts('women')}
+                style={{marginLeft:"1rem"}}
+
               />
-              <span className="category-label">Women's Clothing</span>
+              <span style={{marginLeft:"2rem",cursor: "pointer",borderRadius: "5px",padding: "10px 20px",width:"3px",backgroundColor:"#db9191"}}  className="category-label">Women's Clothing</span>
             </label>
             <label>
               <input
@@ -124,8 +129,9 @@ const Home = (props) => {
                 value="all"
                 checked={selectedCategory === 'all'}
                 onChange={() => filterProducts('all')}
+                style={{marginLeft:"1rem"}}
               />
-              <span className="category-label">All</span>
+              <span style={{marginLeft:"2rem",cursor: "pointer",borderRadius: "5px",padding: "10px 20px",width:"3px",backgroundColor:"#db9191"}} className="category-label">All</span>
             </label>
           </div>
           <div className="filter-actions">
