@@ -159,6 +159,7 @@ const RegisterPage = () => {
             id="birthdate"
             value={birthdate}
             onChange={handleBirthdateChange}
+            
           />
           <br />
           <span className="error">{birthdateError}</span>
@@ -184,10 +185,10 @@ const RegisterPage = () => {
           />
           <br />
           <span className="error">{confirmPasswordError}</span>
-        </div>
+        </div><br/>
         <button type="submit" className="submit-button">
           Register
-        </button>
+        </button><br/><br/>
         <Link to="/login" className="login-link">
           Already registered? Login here
         </Link>

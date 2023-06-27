@@ -1,5 +1,8 @@
+// reducer.js
+
 const initialState = {
-    users: [],
+    registeredUsers: [], // Initialize the registeredUsers state as an empty array
+    // other state properties...
   };
   
   const userReducer = (state = initialState, action) => {
@@ -7,12 +10,14 @@ const initialState = {
       case 'REGISTER_USER':
         return {
           ...state,
-          users: [...state.users, action.payload],
+          registeredUsers: [...state.registeredUsers, action.payload],
         };
+      // other cases...
       default:
         return state;
     }
   };
   
   export default userReducer;
+  
   
